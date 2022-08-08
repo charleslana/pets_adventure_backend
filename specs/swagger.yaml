@@ -6,7 +6,7 @@ info:
 servers:
   - url: http://localhost:3000
     description: Local server
-  - url: http://localhost:3000
+  - url: https://pets-adventure-backend.herokuapp.com
     description: Remote server
 tags:
   - name: "auth"

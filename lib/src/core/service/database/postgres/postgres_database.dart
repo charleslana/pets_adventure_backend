@@ -19,7 +19,7 @@ class PostgresDatabase implements RemoteDatabase, Disposable {
     final databaseUrl = env.entries.firstWhere(
         (element) => element.key == 'DATABASE_URL',
         orElse: () => const MapEntry('DATABASE_URL',
-            'postgres://tcmmztggqsabgb:9a53bc5677ddbcd6ed326262fc81892ecffd000669e8b4c405c365ebca1b83b7@ec2-44-195-100-240.compute-1.amazonaws.com:5432/d1fa89iv1een6c?sslmode=require'));
+            'postgres://tcmmztggqsabgb:9a53bc5677ddbcd6ed326262fc81892ecffd000669e8b4c405c365ebca1b83b7@ec2-44-195-100-240.compute-1.amazonaws.com:5432/d1fa89iv1een6c'));
     final url = databaseUrl.value;
     final uri = Uri.parse(url);
     final connection = PostgreSQLConnection(
@@ -28,6 +28,7 @@ class PostgresDatabase implements RemoteDatabase, Disposable {
       uri.pathSegments.first,
       username: uri.userInfo.split(':').first,
       password: uri.userInfo.split(':').last,
+      useSSL: true,
     );
     await connection.open();
     _completer.complete(connection);

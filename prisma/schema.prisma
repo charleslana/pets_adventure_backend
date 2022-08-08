@@ -1,0 +1,19 @@
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id        Int       @id @default(autoincrement())
+    email     String    @unique @db.VarChar(50)
+    password  String    @db.VarChar(255)
+    name      String?   @unique @db.VarChar(20)
+    role      UserRole  @default(user)
+    createdAt DateTime? @default(now())
+    updatedAt DateTime? @default(now()) @updatedAt
+}
+
+enum UserRole {
+    admin
+    user
+}

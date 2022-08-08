@@ -23,11 +23,12 @@ class PostgresDatabase implements RemoteDatabase, Disposable {
     final url = databaseUrl.value;
     final uri = Uri.parse(url);
     final connection = PostgreSQLConnection(
-      uri.host,
-      uri.port,
-      uri.pathSegments.first,
-      username: uri.userInfo.split(':').first,
-      password: uri.userInfo.split(':').last,
+      'ec2-44-195-100-240.compute-1.amazonaws.com',
+      5432,
+      'd1fa89iv1een6c',
+      username: 'tcmmztggqsabgb',
+      password:
+          '9a53bc5677ddbcd6ed326262fc81892ecffd000669e8b4c405c365ebca1b83b7',
     );
     await connection.open();
     _completer.complete(connection);

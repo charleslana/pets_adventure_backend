@@ -2,17 +2,15 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:pets_adventure_backend/src/core/service/database/remote_database.dart';
-import 'package:pets_adventure_backend/src/core/service/dot_env/dot_env_service.dart';
 import 'package:postgres/postgres.dart';
 import 'package:shelf_modular/shelf_modular.dart';
 
 class PostgresDatabase implements RemoteDatabase, Disposable {
-  PostgresDatabase(this._dotEnvService) {
+  PostgresDatabase() {
     _init();
   }
 
   final _completer = Completer<PostgreSQLConnection>();
-  final DotEnvService _dotEnvService;
 
   Future<void> _init() async {
     final env = Platform.environment;

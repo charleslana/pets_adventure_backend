@@ -7,7 +7,7 @@ class DotEnvService {
 
   DotEnvService({Map<String, String>? mocks}) {
     if (mocks == null) {
-      _init();
+      //_init();
     } else {
       _map.addAll(mocks);
     }

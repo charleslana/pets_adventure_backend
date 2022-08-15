@@ -1,4 +1,5 @@
 import 'package:pets_adventure_backend/src/core/core_module.dart';
+import 'package:pets_adventure_backend/src/core/service/version/version_handler.dart';
 import 'package:pets_adventure_backend/src/features/auth/auth_module.dart';
 import 'package:pets_adventure_backend/src/features/swagger/swagger_handler.dart';
 import 'package:pets_adventure_backend/src/features/user/user_module.dart';
@@ -17,6 +18,7 @@ class AppModule extends Module {
         Route.get(
             '/**', (Request request) => Response.ok('Rota não encontrada')),
         Route.get('/documentation/**', swaggerHandler),
+        Route.get('/version', versionHandler),
         Route.module('/', module: UserModule()),
         Route.module('/auth', module: AuthModule()),
       ];
